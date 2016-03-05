@@ -336,19 +336,12 @@ public class MenuLookup {
 	 */
 	private MenuItem[] getMenuBarItems(final Shell s) {
 
-		MenuItem[] items = Display.syncExec(new ResultRunnable<MenuItem[]>() {
-
-			@Override
-			public MenuItem[] run() {
-				log.info("Getting Menu Bar of shell '" + s.getText() + "'");
-				Menu menu = s.getMenuBar();
-				if (menu == null){
-					return null;
-				}
-				MenuItem[] items = menu.getItems();
-				return items;
-			}
+		MenuItem[] items = Display.<MenuItem[]>syncExec(()-> {
+			log.info("Getting Menu Bar of shell '" + s.getText() + "'");
+			Menu menu = s.getMenuBar();
+			return (menu == null) ? null : menu.getItems();
 		});
+		
 		if(items == null){
 			String shellText = WidgetHandler.getInstance().getText(s);
 			throw new CoreLayerException("Cannot find a menu bar of shell " + shellText);

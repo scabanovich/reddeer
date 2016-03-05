@@ -10,7 +10,7 @@
 	
 	<properties>
 		<!-- when you're ready to move to building with JDK 8, you can move up to Tycho 0.23.1 -->
-		<tycho-version>0.22.0</tycho-version>
+		<tycho-version>0.23.1</tycho-version>
 		<tychoExtrasVersion>${tycho-version}</tychoExtrasVersion>
 		<jbossTychoPluginsVersion>0.23.1</jbossTychoPluginsVersion>
 		<eclipse-target-site>http://download.eclipse.org/releases/mars</eclipse-target-site>
